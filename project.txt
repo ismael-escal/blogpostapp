@@ -1,0 +1,101 @@
+Objective: ExpressJS API - Blog Post Application
+
+1. What is the main objective of the project?
+	- ExpressJS API - Blog Post Application with Comments and CRUD functionalities for both Users and Admin
+
+2. Who are the target users of the application?
+	- Public
+
+3. What are the core features or functionalities required?
+
+	- User are able to Register and Login Securely
+	- CRUD Operation of blog posts for regular users
+	- Users can only create, edit and delete their own posts.
+	- All users can view all available posts and a single post.
+	- Comments can be viewed in a single post.
+	- Authenticated Users can add comments to a post.
+	- CRUD Operation for Admin
+	- Only admin can delete any post and remove any comment.
+
+4. What data will the application need to store and manage?
+
+	- Post
+		- title
+		- content
+		- author
+		- createdOn
+		- comments
+
+	- Comment
+		- comment
+		- author
+		- post
+		- createdOn
+
+	- User information 
+		- userName
+		- email
+		- password
+		- isAdmin
+
+5. Are there any specific technical requirements or constraints?
+
+	- Express.js API.
+	- MongoDB with Mongoose for data storage and management.
+	- RESTful Architecture.
+
+6. What are the security and authentication requirements?
+
+	- Token-based Authentication (JWT).
+	- Brcypt hash
+
+7. What are your routes and controllers?
+
+	Routes:
+
+		User
+
+			POST /users/login - User login route.
+			POST /users/register - User registration route.
+			GET /users/details - Retrieve User details route.
+
+		Post Routes:
+
+			POST /posts/addPost - Add a new post.
+			GET /posts/getPosts - Retrieve the list of all posts.
+			GET /posts/getMyPosts - Retrieve the list of all posts made by the user.
+			GET /posts/getPost/:postId - Retrieve a specific post by its ID.
+			PATCH /posts/updatePost/:postId - Update an existing post.
+			DELETE /posts/deletePost/:postId - Delete a post by its ID.
+
+		Comment Routes:
+
+			POST /comments/addComment/:postId - Add a comment to a given post by its ID.
+			GET /comments/getComments/:postId - Retrieve the list of all comments to a post by its ID.
+			PATCH /comments/updateComment/:commentId - Update an existing comment by its ID.
+			DELETE /comments/deleteComment/:commentId - Delete a comment by its ID
+
+
+	Controllers:
+
+		User Controller:
+
+			loginUser
+			registerUser
+			getProfile
+
+		Post Controller:
+
+			addPost
+			getAllPosts
+			getPostByUser
+			getPostById
+			updatePost
+			deletePost
+			
+		Comment Controller:
+
+			addComment
+			getComments
+			updateComment
+			deleteComment
