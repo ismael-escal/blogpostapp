@@ -44,6 +44,28 @@ module.exports.getComments = (req, res) => {
 
 };
 
+module.exports.getCommentById = async (req, res) => {
+    try {
+        let commentId = req.params.commentId;
+
+        // Find the comment by ID and populate the author field
+        let comment = await Comment.findById(commentId).populate('author', 'userName');
+
+        if (!comment) {
+            return res.status(404).send({ error: 'Comment not found' });
+        }
+
+        // Return the comment
+        return res.status(200).send({ comment });
+
+    } catch (findErr) {
+        console.error('Error finding comment: ', findErr);
+        return res.status(500).send({ error: 'Failed to fetch comment' });
+    }
+};
+
+
+
 module.exports.updateComment = async (req, res) => {
     try {
         let commentId = req.params.commentId;

@@ -21,6 +21,7 @@ Comment Controller:
 
 router.post("/addComment/:postId", verify, commentController.addComment);
 router.get("/getComments/:postId", commentController.getComments);
+router.get("/getComment/:commentId", commentController.getCommentById);
 router.patch("/updateComment/:commentId", verify, commentController.updateComment);
 router.delete("/deleteComment/:commentId", verify, commentController.deleteComment);
 
